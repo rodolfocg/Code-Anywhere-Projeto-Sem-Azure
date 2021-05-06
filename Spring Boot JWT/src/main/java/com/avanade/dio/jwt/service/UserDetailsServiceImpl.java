@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
        private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
