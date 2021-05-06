@@ -33,7 +33,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.GET, SecurityConstants.STATUS_URL)
         .permitAll()
         .antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL)
-        .permitAll();
+        .permitAll()
         .anyRequest().authenticated();
 
     }
