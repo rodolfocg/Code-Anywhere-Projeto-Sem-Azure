@@ -1,26 +1,30 @@
 package com.avanade.dio.jwt.service;
 
+
 import com.avanade.dio.jwt.data.UserData;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class UserDetailsServiceImpl implements UserDetailsService {
+@Service
+class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+       private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     public UserDetailsServiceImpl(BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
-    public UserDetails LoadUserByName(String userName) throws UsernameNotFoundException{
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
         UserData user = findUser(userName);
         if (user == null) {
@@ -30,7 +34,7 @@ public abstract class UserDetailsServiceImpl implements UserDetailsService {
     }
 
 
-private UserData findUser(String userName) {
+    private UserData findUser(String userName) {
 
         UserData user = new UserData();
         user.setUserName("admin");
@@ -38,11 +42,13 @@ private UserData findUser(String userName) {
 
         return user;
     }
-    public List<UserData> ListUsers() {
+
+    public List<UserData> listUsers() {
         ArrayList<UserData> lst = new ArrayList<>();
-        lst.add(findUser(userName: "admin"));
+        lst.add(findUser( "admin"));
         return lst;
 
-
     }
+
 }
+
